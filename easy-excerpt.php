@@ -3,7 +3,7 @@
 Plugin Name: Easy Excerpt
 Plugin URI: http://fredrikmalmgren.com/wordpress/plugins/easy-excerpt/
 Description: Control your excerpt style from admin. Choose excerpt length, ending and if you want a "read more"-link
-Version: 0.1
+Version: 0.2.0
 Author: Fredrik Malmgren	
 Author URI: http://fredrikmalmgren.com/
 */
@@ -21,13 +21,14 @@ class easy_excerpt {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 
 		if(get_option( 'easy_excerpt_length' ) > 0){
-			add_filter('excerpt_length', array( $this, 'new_excerpt_length' ) );
+			add_filter('excerpt_length', array( $this, 'custom_excerpt_length' ) );
 		}		
 		if(get_option( 'easy_excerpt_more' ) != ''){
-			add_filter('excerpt_more', array( $this, 'new_excerpt_more' ) );
+			add_filter('excerpt_more', array( $this, 'custom_excerpt_more' ) );
 		}	
 		if(get_option( 'easy_excerpt_more_link' ) != ''){
-			add_filter('excerpt_more', array( $this, 'new_excerpt_more_link' ) );
+			add_filter('excerpt_more', array( $this, 'custom_auto_excerpt_more_link' ) );
+			add_filter('get_the_excerpt', array( $this, 'custom_manual_excerpt_more_link' ) );
 		}		
 	}
 
@@ -101,21 +102,26 @@ class easy_excerpt {
 	* Functions for modifying excerpt style
 	*/
 	
-	function new_excerpt_length($length) {
+	function custom_excerpt_length($length) {
 		return get_option( 'easy_excerpt_length' );
 	}
 
-	function new_excerpt_more($more) {
+	function custom_excerpt_more($more) {
 		return get_option( 'easy_excerpt_more' );
 	}
 
-	function new_excerpt_more_link($more) {
-		   global $post;
-		   $link = get_option( 'easy_excerpt_more_link' );
-			if($more == ''){
-				$more = '[...]'; 
-			}	   
-		return $more. ' <a href="'. get_permalink($post->ID) . '">' . $link . '</a>';
+	function custom_auto_excerpt_more_link($more) {
+		$link = get_option( 'easy_excerpt_more_link' );
+		return $more. ' <a href="'. get_permalink() . '" rel="nofollow">' . $link . '</a>';
 	}
+	
+	function custom_manual_excerpt_more_link($more) {
+		$link = get_option( 'easy_excerpt_more_link' );
+		if( has_excerpt() ) {
+			$excerpt_more_link = ' <a href="'. get_permalink() . '" rel="nofollow">' . $link . '</a>';
+		}
+		return $more. $excerpt_more_link;
+	}	
 
 }
+?>

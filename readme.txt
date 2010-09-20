@@ -7,7 +7,7 @@ Author URI:        http://fredrikmalmgren.com
 Author:            Fredrik Malmgren   
 Requires at least: 3.0.1
 Tested up to:      3.0.1
-Stable tag:        0.1.0
+Stable tag:        0.2.0
 
 Manage your posts excerpt with Easy Excerpt. Change excerpt length, ending and "read more"-link from WordPress admin.
 
@@ -42,6 +42,9 @@ Follow the development of this plugin at [FredrikMalmgren.com](http://fredrikmal
 1. Admin panel for managing excerpt
 
 == Changelog ==
+
+= 0.2.0 =
+* Added so that "more link" also shows up on manual excerpts
 
 = 0.1.0 =
 * Initial release
