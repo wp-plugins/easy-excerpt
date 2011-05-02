@@ -5,9 +5,9 @@ Plugin URI:        http://fredrikmalmgren.com/wordpress/plugins/easy-excerpt/
 Tags:              excerpt, post
 Author URI:        http://fredrikmalmgren.com
 Author:            Fredrik Malmgren   
-Requires at least: 3.0.1
-Tested up to:      3.0.1
-Stable tag:        0.2.0
+Requires at least: 3.0.0
+Tested up to:      3.1.2
+Stable tag:        0.3.0
 
 Manage your posts excerpt with Easy Excerpt. Change excerpt length, ending and "read more"-link from WordPress admin.
 
@@ -18,8 +18,6 @@ With Easy Excerpt your can manage your posts excerpt and change excerpt length, 
 
 1. Go to 'Easy Excerpt' under 'Settings' menu
 1. Change the options of your choice
-
-*Plugin zip archive contains a text file with code snippets for those who rather include the excerpt functions in their themes functions.php instead.*
 
 Follow the development of this plugin at [FredrikMalmgren.com](http://fredrikmalmgren.com/wordpress/plugins/easy-excerpt/ "Easy Excerpt - Fredrik Malmgren").
 
@@ -32,7 +30,7 @@ Follow the development of this plugin at [FredrikMalmgren.com](http://fredrikmal
 1. Deactivate the plugin through the 'Plugins' menu in WordPress
 1. Click on delete which will both delete plugin files and data stored in database
 
-**NB:** In you uninstall the plugin in any other way you will manually have to remove these entries the options table:
+**NB:** If you uninstall the plugin in any other way you will manually have to remove these entries from the options table:
 
 * easy_excerpt_length
 * easy_excerpt_more
@@ -42,6 +40,12 @@ Follow the development of this plugin at [FredrikMalmgren.com](http://fredrikmal
 1. Admin panel for managing excerpt
 
 == Changelog ==
+
+= 0.3.0 =
+* Added license information
+* Made plugin ready for translation
+* Added Swedish translation
+* Removed the code-snippets.txt file
 
 = 0.2.0 =
 * Added so that "more link" also shows up on manual excerpts
